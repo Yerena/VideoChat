@@ -81,7 +81,7 @@ function createConnection() {
   }
 
   if (user === '' || room === '') {
-    alert('Both Username and Room Name are Required.');
+    alert('Se requiere usuario y nombre de la sala');
     return false;
   }
   $('.navbar-toggle').trigger('click');
@@ -173,12 +173,6 @@ socket.on('message', function(message) {
   }
 });
 
-////////////////////////////////////////////////////
-// This next section is where we deal with setting
-// up the actual components of the communication
-// we are interested in using. Starting with the
-// video streams
-////////////////////////////////////////////////////
 
 function trace(text) {
   console.log((performance.now() / 1000).toFixed(3) + ": " + text);
@@ -220,15 +214,6 @@ window.onbeforeunload = function(e) {
 }
 
 
-
-/////////////////////////////////////////////////////////
-// Next we setup the data channel between us and the far
-// peer. This is bi-directional, so we use the same
-// connection to send/recv data. However its modal in that
-// one end of the connection needs to kick things off,
-// so there is logic that varies based on if the JS
-// script is acting as the initator or the far end.
-/////////////////////////////////////////////////////////
 
 function createPeerConnection() {
   try {
